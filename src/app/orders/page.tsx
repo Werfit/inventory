@@ -5,11 +5,6 @@ const OrdersPage = () => {
   return (
     <div className="flex flex-col gap-20">
       <header className="flex items-center gap-4">
-        <button className="text-white bg-green-600 leading-3 rounded-full p-1 text-xs shadow-md shadow-green-600/50">
-          <i className="material-symbols-outlined bg-green-500 rounded-full p-1 shadow-md shadow-green-500/50">
-            add
-          </i>
-        </button>
         <span className="text-lg font-bold tracking-wider">Orders / 25</span>
       </header>
 

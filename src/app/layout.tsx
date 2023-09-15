@@ -1,12 +1,11 @@
-// todo: figure out why moving `_layouts` outside of app folder causes issues with styles
-
 import "material-symbols";
 
-import { TopMenu } from "./_layouts/top-menu/top-menu";
-import { NavigationMenu } from "./_layouts/navigation-menu/navigation-menu";
+import { TopMenu } from "~/components/layouts/top-menu/top-menu";
+import { NavigationMenu } from "~/components/layouts/navigation-menu/navigation-menu";
 import { Routes } from "~/lib/constants/routes";
 
 import "../assets/styles/globals.css";
+import { ProductsProvider } from "~/store/products/context";
 
 type Props = {
   children: React.ReactNode;
@@ -16,13 +15,17 @@ const RootLayout: React.FC<Props> = ({ children }) => {
   return (
     <html lang="en">
       <body>
-        <div className="bg-gray-100/50 h-screen w-screen overflow-y-hidden">
-          <div className="flex">
+        <div className="bg-gray-100/50 h-screen w-screen overflow-hidden">
+          <div className="flex h-full">
             <NavigationMenu
-              className="mt-14 w-1/6"
+              className="mt-14 min-w-1/6"
               tabs={Routes.map((route) => route.name)}
             />
-            <main className="mt-14 px-20 py-20 flex-1">{children}</main>
+            <ProductsProvider>
+              <main className="mt-14 px-20 py-20 flex-1 overflow-x-hidden">
+                {children}
+              </main>
+            </ProductsProvider>
           </div>
           {/* can not be the top element, because it will break lower element margins */}
           <TopMenu className="fixed w-screen top-0" />
