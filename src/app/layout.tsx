@@ -1,8 +1,10 @@
+// todo: figure out why moving `_layouts` outside of app folder causes issues with styles
+
 import "material-symbols";
 
-import { Header } from "../app/layouts/header/header";
-import { Sidebar } from "../app/layouts/sidebar/sidebar";
-import { Routes } from "./routes";
+import { Header } from "./_layouts/header/header";
+import { Sidebar } from "./_layouts/sidebar/sidebar";
+import { Routes } from "~/lib/constants/routes";
 
 import "../assets/styles/globals.css";
 

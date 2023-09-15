@@ -5,4 +5,4 @@ const ErrorPage = () => (
   </div>
 );
 
-export { ErrorPage };
+export default ErrorPage;

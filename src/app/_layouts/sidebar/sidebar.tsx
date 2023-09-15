@@ -4,8 +4,7 @@ import Image from "next/image";
 
 import { usePathname } from "next/navigation";
 
-import { Routes } from "../../routes";
-import { Icon } from "~/app/components/icon/Icon";
+import { Routes } from "~/lib/constants/routes";
 
 type Props = {
   tabs: string[];
@@ -34,23 +33,22 @@ const Sidebar: React.FC<Props> = ({ tabs, className = "" }) => {
         </div>
 
         <ul className="text-center mt-10 flex flex-col gap-3">
-          {tabs.map((tab, index) => (
-            <li
-              key={index}
-              className={
-                tab === pathname
-                  ? `underline decoration-2 decoration-green-600 underline-offset-8`
-                  : ""
-              }
-            >
-              <Link
-                // not really effective, but it's not that much of routes
-                href={Routes.find((route) => route.name === tab)?.path ?? "/"}
+          {tabs.map((tab, index) => {
+            const route = Routes.find((route) => route.name === tab);
+
+            return (
+              <li
+                key={index}
+                className={
+                  route?.path === pathname
+                    ? `underline decoration-2 decoration-green-600 underline-offset-8`
+                    : ""
+                }
               >
-                {tab}
-              </Link>
-            </li>
-          ))}
+                <Link href={route?.path ?? "/"}>{tab}</Link>
+              </li>
+            );
+          })}
         </ul>
       </div>
     </nav>

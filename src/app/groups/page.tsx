@@ -1,5 +1,5 @@
-import { GroupTab } from "../../app/components/group-tab/group-tab";
-import { GroupItemsList } from "../../app/components/group-items-list/group-items-list";
+import { GroupTab } from "../../components/group-tab/group-tab";
+import { GroupItemsList } from "../../components/group-items-list/group-items-list";
 
 const GroupsPage = () => {
   return (
