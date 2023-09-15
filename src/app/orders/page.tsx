@@ -1,21 +1,41 @@
-import { GroupTab } from "../../components/group-tab/group-tab";
-import { GroupItemsList } from "../../components/group-items-list/group-items-list";
+"use client";
+
+import { useState } from "react";
+import { useSelector } from "~/hooks/redux/hooks";
+
+import { Order } from "./components/order/order";
+import { OrderDetails } from "./components/order-details/order-details";
+import type { Order as OrderType } from "~/lib/types/order";
 
 const OrdersPage = () => {
+  const { orders } = useSelector((state) => state.orders);
+  const [currentOrder, setCurrentOrder] = useState<OrderType | null>(null);
+
   return (
     <div className="flex flex-col gap-20">
       <header className="flex items-center gap-4">
-        <span className="text-lg font-bold tracking-wider">Orders / 25</span>
+        <span className="text-lg font-bold tracking-wider">
+          Orders / {orders.length}
+        </span>
       </header>
 
       <main className="flex gap-10">
         <div className="flex flex-col gap-4 min-w-[35%]">
-          <GroupTab />
-          <GroupTab />
-          <GroupTab />
+          {orders.map((order) => (
+            <Order
+              key={order.id}
+              onClick={(order) => setCurrentOrder(order)}
+              order={order}
+            />
+          ))}
         </div>
 
-        <GroupItemsList className="flex-1" />
+        {currentOrder !== null && (
+          <OrderDetails
+            order={currentOrder}
+            className="flex-1"
+          />
+        )}
       </main>
     </div>
   );

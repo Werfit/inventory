@@ -5,7 +5,7 @@ import { NavigationMenu } from "~/components/layouts/navigation-menu/navigation-
 import { Routes } from "~/lib/constants/routes";
 
 import "../assets/styles/globals.css";
-import { ProductsProvider } from "~/store/products/context";
+import { ProductsProvider } from "~/store/provider";
 
 type Props = {
   children: React.ReactNode;
