@@ -59,7 +59,7 @@ const ProductsPage = () => {
   };
 
   return (
-    <div className="flex flex-col gap-20 overflow-y-scroll">
+    <div className="flex flex-col gap-20 overflow-y-scroll animate__animated animate__fadeIn">
       <header className="flex items-center gap-10">
         <span className="text-lg font-bold tracking-wider">
           Products / {products.length}

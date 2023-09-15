@@ -1,11 +1,14 @@
+import "animate.css";
 import "material-symbols";
+
+import { ProductsProvider } from "~/store/provider";
+
+import { Routes } from "~/lib/constants/routes";
 
 import { TopMenu } from "~/components/layouts/top-menu/top-menu";
 import { NavigationMenu } from "~/components/layouts/navigation-menu/navigation-menu";
-import { Routes } from "~/lib/constants/routes";
 
 import "../assets/styles/globals.css";
-import { ProductsProvider } from "~/store/provider";
 
 type Props = {
   children: React.ReactNode;
