@@ -1,3 +1,5 @@
+import "material-symbols";
+
 import { Header } from "../app/layouts/header/header";
 import { Sidebar } from "../app/layouts/sidebar/sidebar";
 import { Routes } from "./routes";
@@ -11,12 +13,6 @@ type Props = {
 const RootLayout: React.FC<Props> = ({ children }) => {
   return (
     <html lang="en">
-      <head>
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=optional"
-        />
-      </head>
       <body>
         <div className="bg-gray-100/50 h-screen w-screen overflow-y-hidden">
           <div className="flex">

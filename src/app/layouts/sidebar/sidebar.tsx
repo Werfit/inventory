@@ -5,6 +5,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 import { Routes } from "../../routes";
+import { Icon } from "~/app/components/icon/Icon";
 
 type Props = {
   tabs: string[];
