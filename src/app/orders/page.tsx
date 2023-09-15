@@ -20,7 +20,11 @@ const OrdersPage = () => {
       </header>
 
       <main className="flex gap-10">
-        <div className="flex flex-col gap-4 min-w-[35%]">
+        <div
+          className={`flex flex-col gap-4 min-w-[35%] flex-${Number(
+            !currentOrder
+          )}`}
+        >
           {orders.map((order) => (
             <Order
               key={order.id}
@@ -33,6 +37,7 @@ const OrdersPage = () => {
         {currentOrder !== null && (
           <OrderDetails
             order={currentOrder}
+            onClose={() => setCurrentOrder(null)}
             className="flex-1"
           />
         )}
