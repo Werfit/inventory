@@ -1,5 +1,5 @@
 const ProductsPage = () => {
-  throw new Response("Not found", { status: 404 });
+  return <h1>Products</h1>;
 };
 
 export default ProductsPage;

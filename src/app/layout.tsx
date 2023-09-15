@@ -2,8 +2,8 @@
 
 import "material-symbols";
 
-import { Header } from "./_layouts/header/header";
-import { Sidebar } from "./_layouts/sidebar/sidebar";
+import { TopMenu } from "./_layouts/top-menu/top-menu";
+import { NavigationMenu } from "./_layouts/navigation-menu/navigation-menu";
 import { Routes } from "~/lib/constants/routes";
 
 import "../assets/styles/globals.css";
@@ -18,14 +18,14 @@ const RootLayout: React.FC<Props> = ({ children }) => {
       <body>
         <div className="bg-gray-100/50 h-screen w-screen overflow-y-hidden">
           <div className="flex">
-            <Sidebar
+            <NavigationMenu
               className="mt-14 w-1/6"
               tabs={Routes.map((route) => route.name)}
             />
             <main className="mt-14 px-20 py-20 flex-1">{children}</main>
           </div>
           {/* can not be the top element, because it will break lower element margins */}
-          <Header className="fixed w-screen top-0" />
+          <TopMenu className="fixed w-screen top-0" />
         </div>
       </body>
     </html>

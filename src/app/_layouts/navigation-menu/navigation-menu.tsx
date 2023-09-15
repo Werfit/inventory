@@ -11,7 +11,7 @@ type Props = {
   className?: string;
 };
 
-const Sidebar: React.FC<Props> = ({ tabs, className = "" }) => {
+const NavigationMenu: React.FC<Props> = ({ tabs, className = "" }) => {
   const pathname = usePathname();
 
   return (
@@ -55,4 +55,4 @@ const Sidebar: React.FC<Props> = ({ tabs, className = "" }) => {
   );
 };
 
-export { Sidebar };
+export { NavigationMenu };

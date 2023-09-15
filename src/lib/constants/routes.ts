@@ -5,12 +5,8 @@ type Route = {
 
 const Routes: Route[] = [
   {
-    name: "Income",
-    path: "/income",
-  },
-  {
-    name: "Groups",
-    path: "/groups",
+    name: "Orders",
+    path: "/orders",
   },
   {
     name: "Products",

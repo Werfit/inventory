@@ -1,7 +1,7 @@
 import { GroupTab } from "../../components/group-tab/group-tab";
 import { GroupItemsList } from "../../components/group-items-list/group-items-list";
 
-const GroupsPage = () => {
+const OrdersPage = () => {
   return (
     <div className="flex flex-col gap-20">
       <header className="flex items-center gap-4">
@@ -10,7 +10,7 @@ const GroupsPage = () => {
             add
           </i>
         </button>
-        <span className="text-lg font-bold tracking-wider">Groups / 25</span>
+        <span className="text-lg font-bold tracking-wider">Orders / 25</span>
       </header>
 
       <main className="flex gap-10">
@@ -26,4 +26,4 @@ const GroupsPage = () => {
   );
 };
 
-export default GroupsPage;
+export default OrdersPage;

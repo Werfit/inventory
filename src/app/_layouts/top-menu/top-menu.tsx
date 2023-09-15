@@ -42,7 +42,7 @@ type Props = {
   className?: string;
 };
 
-const Header: React.FC<Props> = ({ className = "" }) => {
+const TopMenu: React.FC<Props> = ({ className = "" }) => {
   const [currentTime, setCurrentTime] = useState(getFormattedTime());
 
   useEffect(() => {
@@ -80,4 +80,4 @@ const Header: React.FC<Props> = ({ className = "" }) => {
   );
 };
 
-export { Header };
+export { TopMenu };
