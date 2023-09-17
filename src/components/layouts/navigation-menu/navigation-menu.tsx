@@ -1,12 +1,12 @@
 "use client";
 
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import Link from "next-intl/link";
 import Image from "next/image";
 
-import { usePathname } from "next/navigation";
+import { usePathname } from "next-intl/client";
 
 import { Routes } from "~/common/constants/routes";
-import { useTranslations } from "next-intl";
 
 type Props = {
   tabs: string[];
