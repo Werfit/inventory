@@ -39,6 +39,11 @@ const NavigationMenu: React.FC<Props> = ({ tabs, className = "" }) => {
           {tabs.map((tab, index) => {
             const route = Routes.find((route) => route.name === tab);
 
+            // console.log(
+            //   route?.path === pathname
+            //     ? `underline decoration-2 decoration-green-600 underline-offset-8`
+            //     : ""
+            // );
             return (
               <li
                 key={index}
