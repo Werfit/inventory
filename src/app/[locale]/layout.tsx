@@ -18,9 +18,9 @@ type Props = {
   params: { locale: string };
 };
 
-export function generateStaticParams() {
+export const generateStaticParams = () => {
   return [{ locale: "en" }, { locale: "ua" }];
-}
+};
 
 const RootLayout: React.FC<Props> = async ({
   children,
