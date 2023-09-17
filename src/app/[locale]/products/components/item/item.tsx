@@ -1,6 +1,6 @@
 import { useTranslations } from "next-intl";
 
-import { useDispatch } from "~/hooks/redux/hooks";
+import { useDispatch, useSelector } from "~/hooks/redux/hooks";
 import { removeById } from "~/store/products/slices";
 import type { Product } from "~/common/types/product";
 
@@ -19,6 +19,7 @@ const formatShortDate = (date: string) => {
 };
 
 const Item: React.FC<Props> = ({ product, className = "" }) => {
+  const { orders } = useSelector((state) => state.orders);
   const dispatch = useDispatch();
   const t = useTranslations();
 
@@ -89,9 +90,9 @@ const Item: React.FC<Props> = ({ product, className = "" }) => {
         </h2>
       </div>
 
-      <div className="w-96">SHOULD BE ORDER HERE</div>
-
-      <div className="w-20 text-center">-</div>
+      <div className="w-96">
+        {orders.find((order) => order.id === product.order)?.title ?? "-"}
+      </div>
 
       <div className="w-96">{product.specification}</div>
 
