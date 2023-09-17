@@ -64,7 +64,11 @@ const ProductsPage = () => {
   return (
     <div className="flex flex-col gap-20 overflow-y-scroll animate__animated animate__fadeIn">
       <header className="flex items-center gap-10">
-        <span className="text-lg font-bold tracking-wider">
+        <span
+          className="text-lg font-bold tracking-wider"
+          // products are stored in local storage, therefore the content might differ from the server side data, which causes warnings
+          suppressHydrationWarning
+        >
           {t("productsPage")} / {products.length}
         </span>
         <Filters
