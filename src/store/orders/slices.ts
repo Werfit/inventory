@@ -1,4 +1,4 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 import type { Order } from "~/common/types/order";
 import { orders } from "~/common/mocks/orders";
@@ -17,5 +17,4 @@ const ordersSlice = createSlice({
   reducers: {},
 });
 
-// export const { removeById } = ordersSlice.actions;
 export default ordersSlice.reducer;

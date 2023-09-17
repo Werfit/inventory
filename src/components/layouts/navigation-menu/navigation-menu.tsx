@@ -7,6 +7,7 @@ import Image from "next/image";
 import { usePathname } from "next-intl/client";
 
 import { Routes } from "~/common/constants/routes";
+import PlaceHolderImage from "../../../../public/user-image.jpg";
 
 type Props = {
   tabs: string[];
@@ -24,11 +25,10 @@ const NavigationMenu: React.FC<Props> = ({ tabs, className = "" }) => {
       <div>
         <div className="relative">
           <Image
-            src="/user-image.jpg"
+            src={PlaceHolderImage}
             alt="User image"
             className="w-40 h-40 object-cover rounded-full"
-            width={500}
-            height={500}
+            priority
           />
           <button className="absolute bottom-0 right-0 bg-white shadow-lg shadow-gray-100/50 py-2 px-3 rounded-full">
             <i className="material-symbols-outlined text-xl">settings</i>

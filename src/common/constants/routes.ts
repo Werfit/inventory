@@ -12,6 +12,6 @@ const Routes: Route[] = [
     name: "Products",
     path: "/products",
   },
-] as const;
+];
 
 export { Routes };
