@@ -1,14 +1,36 @@
+import { useTranslations } from "next-intl";
+
 import { useDispatch } from "~/hooks/redux/hooks";
 import { removeById } from "~/store/products/slices";
-import type { Product } from "~/lib/types/product";
+import type { Product } from "~/common/types/product";
 
 type Props = {
   product: Product;
   className?: string;
 };
 
+const formatShortDate = (date: string) => {
+  const date_ = new Date(date);
+
+  const month = date_.getMonth() + 1;
+  const day = date_.getDate();
+
+  return `${day < 10 ? `0${day}` : day} / ${month < 10 ? `0${month}` : month}`;
+};
+
 const Item: React.FC<Props> = ({ product, className = "" }) => {
   const dispatch = useDispatch();
+  const t = useTranslations();
+
+  const formatDate = (date: string) => {
+    const date_ = new Date(date);
+
+    const year = date_.getFullYear();
+    const month = date_.getMonth();
+    const day = date_.getDate();
+
+    return `${day < 10 ? `0${day}` : day} ${t(`months.${month}`)}, ${year}`;
+  };
 
   // maybe should memoize it, but as long as there are not many price currencies, it's not that big of a deal
   const secondaryPrice = product.price.find((price) => !price.isDefault);
@@ -35,25 +57,35 @@ const Item: React.FC<Props> = ({ product, className = "" }) => {
       </div>
 
       {/* todo: support different statuses */}
-      <div className="w-20 text-center">
-        {product.inUse ? "In Use" : "In Repair"}
+      <div className="w-40 text-center">
+        {product.inUse ? t("modelBeingUsed") : t("modelInRepair")}
       </div>
 
       <div className="w-52 text-center">
-        <p>From {product.guarantee.start}</p>
-        <p>To {product.guarantee.end}</p>
+        <p>
+          {t("timeRanges.From")} {product.guarantee.start}
+        </p>
+        <p>
+          {t("timeRanges.To")} {product.guarantee.end}
+        </p>
       </div>
 
-      <div className="w-20 text-center">{product.isNew ? "New" : "Used"}</div>
+      <div className="w-40 text-center">
+        {product.isNew ? t("modelNew") : t("modelWasUsed")}
+      </div>
 
       <div className="w-52 text-center">
         <p className="text-gray-500 text-xs">
           {secondaryPrice
-            ? `${secondaryPrice.value} ${secondaryPrice.symbol}`
+            ? `${secondaryPrice.value} ${t(
+                `currencies.${secondaryPrice.symbol}`
+              )}`
             : "-"}
         </p>
         <h2>
-          {primaryPrice ? `${primaryPrice.value} ${primaryPrice.symbol}` : "-"}
+          {primaryPrice
+            ? `${primaryPrice.value} ${t(`currencies.${primaryPrice.symbol}`)}`
+            : "-"}
         </h2>
       </div>
 
@@ -64,8 +96,8 @@ const Item: React.FC<Props> = ({ product, className = "" }) => {
       <div className="w-96">{product.specification}</div>
 
       <div className="w-52 text-center">
-        <p className="text-gray-500 text-xs">06/12</p>
-        <h2>06 SEP, 2017</h2>
+        <p className="text-gray-500 text-xs">{formatShortDate(product.date)}</p>
+        <h2>{formatDate(product.date)}</h2>
       </div>
 
       <div className="w-20">

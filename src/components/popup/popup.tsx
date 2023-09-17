@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { ANIMATION_TRANSITION } from "~/lib/constants/animation";
+import { ANIMATION_TRANSITION } from "~/common/constants/animation";
 
 type Props = {
   title: string;

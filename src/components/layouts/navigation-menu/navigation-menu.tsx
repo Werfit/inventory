@@ -1,10 +1,12 @@
 "use client";
+
 import Link from "next/link";
 import Image from "next/image";
 
 import { usePathname } from "next/navigation";
 
-import { Routes } from "~/lib/constants/routes";
+import { Routes } from "~/common/constants/routes";
+import { useTranslations } from "next-intl";
 
 type Props = {
   tabs: string[];
@@ -12,6 +14,7 @@ type Props = {
 };
 
 const NavigationMenu: React.FC<Props> = ({ tabs, className = "" }) => {
+  const t = useTranslations();
   const pathname = usePathname();
 
   return (
@@ -45,7 +48,7 @@ const NavigationMenu: React.FC<Props> = ({ tabs, className = "" }) => {
                     : ""
                 }
               >
-                <Link href={route?.path ?? "/"}>{tab}</Link>
+                <Link href={route?.path ?? "/"}>{t(`pageNames.${tab}`)}</Link>
               </li>
             );
           })}

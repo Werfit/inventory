@@ -1,7 +1,7 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-import type { Product } from "~/lib/types/product";
-import { products } from "~/lib/mocks/products";
+import type { Product } from "~/common/types/product";
+import { products } from "~/common/mocks/products";
 
 type InitialState = {
   products: Product[];

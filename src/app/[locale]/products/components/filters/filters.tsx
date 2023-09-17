@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import Select from "react-tailwindcss-select";
 import {
@@ -19,6 +20,7 @@ type Props = {
 };
 
 const Filters: React.FC<Props> = ({ onChange, className = "" }) => {
+  const t = useTranslations();
   const { products } = useSelector((state) => state.products);
 
   const [currentModel, setCurrentModel] = useState<Option | null>(null);
@@ -57,7 +59,7 @@ const Filters: React.FC<Props> = ({ onChange, className = "" }) => {
   return (
     <div className={`flex gap-4 ${className}`}>
       <div className="flex flex-1 items-center gap-2">
-        Model:
+        {t("modelFilter")}:
         <Select
           options={models.map((model) => ({
             value: model,
@@ -70,7 +72,7 @@ const Filters: React.FC<Props> = ({ onChange, className = "" }) => {
         />
       </div>
       <div className="flex flex-1 items-center gap-2">
-        Specification:
+        {t("specificationFilter")}:
         <Select
           options={specifications.map((specification) => ({
             value: specification,

@@ -1,13 +1,17 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
+
 import { useSelector } from "~/hooks/redux/hooks";
 
 import { Order } from "./components/order/order";
 import { OrderDetails } from "./components/order-details/order-details";
-import type { Order as OrderType } from "~/lib/types/order";
+import type { Order as OrderType } from "~/common/types/order";
 
 const OrdersPage = () => {
+  const t = useTranslations();
+
   const { orders } = useSelector((state) => state.orders);
   const [currentOrder, setCurrentOrder] = useState<OrderType | null>(null);
 
@@ -15,7 +19,7 @@ const OrdersPage = () => {
     <div className="flex flex-col gap-20 animate__animated animate__fadeIn">
       <header className="flex items-center gap-4">
         <span className="text-lg font-bold tracking-wider">
-          Orders / {orders.length}
+          {t("ordersPage")} / {orders.length}
         </span>
       </header>
 

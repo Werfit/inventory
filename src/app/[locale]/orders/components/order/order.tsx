@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { useSelector } from "~/hooks/redux/hooks";
-import type { Order } from "~/lib/types/order";
+import type { Order } from "~/common/types/order";
 
 type Props = {
   order: Order;

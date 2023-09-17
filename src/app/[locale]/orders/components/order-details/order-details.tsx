@@ -1,14 +1,15 @@
 import { useMemo, useState } from "react";
 import { useSelector, useDispatch } from "~/hooks/redux/hooks";
 
-import type { Order } from "~/lib/types/order";
-import type { Product as ProductType } from "~/lib/types/product";
+import type { Order } from "~/common/types/order";
+import type { Product as ProductType } from "~/common/types/product";
 
 import { Popup } from "~/components/popup/popup";
 
 import { Product } from "../product/product";
 import { removeById } from "~/store/products/slices";
-import { ANIMATION_TRANSITION } from "~/lib/constants/animation";
+import { ANIMATION_TRANSITION } from "~/common/constants/animation";
+import { useTranslations } from "next-intl";
 
 type Props = {
   order: Order;
@@ -17,6 +18,7 @@ type Props = {
 };
 
 const OrderDetails: React.FC<Props> = ({ order, onClose, className }) => {
+  const t = useTranslations();
   // needed for fade out animation
   const [isOpen, setIsOpen] = useState(true);
 
@@ -61,7 +63,12 @@ const OrderDetails: React.FC<Props> = ({ order, onClose, className }) => {
                   (product.price.find((price) => price.isDefault)?.value ?? 0),
                 0
               )}{" "}
-              {orderProducts[0].price.find((price) => price.isDefault)?.symbol}
+              {t(
+                `currencies.${
+                  orderProducts[0].price.find((price) => price.isDefault)
+                    ?.symbol
+                }`
+              )}
             </p>
             <p className="text-gray-500 text-sm">
               {orderProducts.reduce(
@@ -70,7 +77,12 @@ const OrderDetails: React.FC<Props> = ({ order, onClose, className }) => {
                   (product.price.find((price) => !price.isDefault)?.value ?? 0),
                 0
               )}{" "}
-              {orderProducts[0].price.find((price) => !price.isDefault)?.symbol}
+              {t(
+                `currencies.${
+                  orderProducts[0].price.find((price) => !price.isDefault)
+                    ?.symbol
+                }`
+              )}
             </p>
           </div>
         )}
@@ -94,7 +106,7 @@ const OrderDetails: React.FC<Props> = ({ order, onClose, className }) => {
           setRemovalConfirmation(false);
           // setCurrentlyRemovedProduct(null);
         }}
-        title="Confirm item removal"
+        title={t("removalConfirmationTitle")}
       >
         <Product
           // we can be sure that at this point product is not null, because it is being set the same time popup visibility flag is set
@@ -109,7 +121,7 @@ const OrderDetails: React.FC<Props> = ({ order, onClose, className }) => {
               // setCurrentlyRemovedProduct(null);
             }}
           >
-            Cancel
+            {t("cancelButtonTitle")}
           </button>
 
           <button
@@ -120,7 +132,7 @@ const OrderDetails: React.FC<Props> = ({ order, onClose, className }) => {
               // setCurrentlyRemovedProduct(null);
             }}
           >
-            Delete
+            {t("removeButtonTitle")}
           </button>
         </footer>
       </Popup>

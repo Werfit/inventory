@@ -5,9 +5,12 @@ import { useSelector } from "~/hooks/redux/hooks";
 import { Filters } from "./components/filters/filters";
 import { Item } from "./components/item/item";
 import { useEffect, useState } from "react";
-import { Product } from "~/lib/types/product";
+import { Product } from "~/common/types/product";
+import { useTranslations } from "next-intl";
 
 const ProductsPage = () => {
+  const t = useTranslations();
+
   const { products } = useSelector((state) => state.products);
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [appliedFilters, setFilters] = useState({
@@ -62,7 +65,7 @@ const ProductsPage = () => {
     <div className="flex flex-col gap-20 overflow-y-scroll animate__animated animate__fadeIn">
       <header className="flex items-center gap-10">
         <span className="text-lg font-bold tracking-wider">
-          Products / {products.length}
+          {t("productsPage")} / {products.length}
         </span>
         <Filters
           onChange={updateFilters}

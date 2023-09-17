@@ -1,0 +1,45 @@
+{
+  "title": "Інвентар",
+  "day": "Сьогодні",
+  "ordersPage": "Закази",
+  "productsPage": "Продукти",
+  "modelFilter": "Модель",
+  "specificationFilter": "Специфікація",
+  "modelBeingUsed": "Використовується",
+  "modelInRepair": "У ремонті",
+  "modelNew": "Новий",
+  "modelWasUsed": "Б/У",
+  "currencies": {
+    "UAH": "ГРН",
+    "USD": "ДОЛ"
+  },
+  "months": [
+    "СІЧ",
+    "ЛЮТ",
+    "МАР",
+    "КВІТ",
+    "ТРАВ",
+    "ЧЕР",
+    "ЛИП",
+    "СЕР",
+    "ВЕР",
+    "ЖОВ",
+    "ЛИС",
+    "ГРУД"
+  ],
+  "removalConfirmationTitle": "Підтвердіть видалення товару",
+  "cancelButtonTitle": "Відмінити",
+  "removeButtonTitle": "Видалити",
+  "pageNames": {
+    "Products": "Продукти",
+    "Orders": "Закази"
+  },
+  "timeRanges": {
+    "From": "Від",
+    "To": "До"
+  },
+  "languages": {
+    "English": "Англійська",
+    "Ukrainian": "Українська"
+  }
+}

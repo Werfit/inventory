@@ -1,0 +1,45 @@
+{
+  "title": "Inventory",
+  "day": "Today",
+  "ordersPage": "Orders",
+  "productsPage": "Products",
+  "modelFilter": "Model",
+  "specificationFilter": "Specification",
+  "modelBeingUsed": "In Use",
+  "modelInRepair": "In Repair",
+  "modelNew": "New",
+  "modelWasUsed": "Used",
+  "currencies": {
+    "UAH": "UAH",
+    "USD": "USD"
+  },
+  "months": [
+    "JUN",
+    "DEC",
+    "MAR",
+    "APR",
+    "MAY",
+    "JUN",
+    "JUL",
+    "AUG",
+    "SEP",
+    "OCT",
+    "NOV",
+    "DEC"
+  ],
+  "removalConfirmationTitle": "Confirm item removal",
+  "cancelButtonTitle": "Cancel",
+  "removeButtonTitle": "Remove",
+  "pageNames": {
+    "Products": "Products",
+    "Orders": "Orders"
+  },
+  "timeRanges": {
+    "From": "From",
+    "To": "To"
+  },
+  "languages": {
+    "English": "English",
+    "Ukrainian": "Ukrainian"
+  }
+}

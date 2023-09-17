@@ -1,7 +1,7 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-import type { Order } from "~/lib/types/order";
-import { orders } from "~/lib/mocks/orders";
+import type { Order } from "~/common/types/order";
+import { orders } from "~/common/mocks/orders";
 
 type InitialState = {
   orders: Order[];

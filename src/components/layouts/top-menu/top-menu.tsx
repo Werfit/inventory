@@ -1,30 +1,8 @@
 "use client";
+import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 
-// returns formatted date (e.g. 12 MAR, 2017)
-const getFormattedDate = () => {
-  const MONTHS = [
-    "JUN",
-    "FEB",
-    "MAR",
-    "APR",
-    "MAY",
-    "JUN",
-    "JUL",
-    "AUG",
-    "SEP",
-    "OCT",
-    "NOV",
-    "DEC",
-  ];
-
-  const date = new Date();
-  const year = date.getFullYear();
-  const month = date.getMonth();
-  const day = date.getDate();
-
-  return `${day < 10 ? `0${day}` : day} ${MONTHS[month]}, ${year}`;
-};
+import { LanguagePicker } from "./components/language-picker";
 
 // returns formatted time (e.g. 12:21)
 const getFormattedTime = () => {
@@ -40,10 +18,22 @@ const getFormattedTime = () => {
 
 type Props = {
   className?: string;
+  locale: string;
 };
 
-const TopMenu: React.FC<Props> = ({ className = "" }) => {
+const TopMenu: React.FC<Props> = ({ locale, className = "" }) => {
+  const t = useTranslations();
   const [currentTime, setCurrentTime] = useState(getFormattedTime());
+
+  // returns formatted date (e.g. 12 MAR, 2017)
+  const getFormattedDate = () => {
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = date.getMonth();
+    const day = date.getDate();
+
+    return `${day < 10 ? `0${day}` : day} ${t(`months.${month}`)}, ${year}`;
+  };
 
   useEffect(() => {
     const INTERVAL = 1000;
@@ -60,11 +50,23 @@ const TopMenu: React.FC<Props> = ({ className = "" }) => {
       className={`flex justify-center text-xs bg-white shadow-lg px-4 ${className}`}
     >
       <div className="container center flex justify-between items-center py-3">
-        <p className="uppercase tracking-widest font-bold text-green-600">
-          Inventory
-        </p>
+        <div className="flex items-center gap-4">
+          <p className="uppercase tracking-widest font-bold text-green-600">
+            {t("title")}
+          </p>
+          <LanguagePicker
+            locale={locale}
+            languages={[
+              { value: "en", label: "English" },
+              {
+                value: "ua",
+                label: "Ukrainian",
+              },
+            ]}
+          />
+        </div>
         <div>
-          <p>Today</p>
+          <p>{t("day")}</p>
           <div className="flex gap-3">
             <span className="font-bold">{getFormattedDate()}</span>
             <span className="flex items-center gap-1">
