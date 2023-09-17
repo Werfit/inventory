@@ -1,15 +1,13 @@
 import { useMemo, useState } from "react";
-import { useSelector, useDispatch } from "~/hooks/redux/hooks";
+import { useSelector } from "~/hooks/redux/hooks";
 
 import type { Order } from "~/common/types/order";
 import type { Product as ProductType } from "~/common/types/product";
 
-import { Popup } from "~/components/popup/popup";
-
 import { Product } from "../product/product";
-import { removeById } from "~/store/products/slices";
 import { ANIMATION_TRANSITION } from "~/common/constants/animation";
 import { useTranslations } from "next-intl";
+import { RemovalConfirmationPopup } from "./components/removal-confirmation";
 
 type Props = {
   order: Order;
@@ -27,8 +25,6 @@ const OrderDetails: React.FC<Props> = ({ order, onClose, className }) => {
     () => products.filter((product) => product.order === order.id),
     [products, order]
   );
-
-  const dispatch = useDispatch();
 
   const [isRemovalConfirmationOpen, setRemovalConfirmation] = useState(false);
   const [currentlyRemovedProduct, setCurrentlyRemovedProduct] =
@@ -100,42 +96,12 @@ const OrderDetails: React.FC<Props> = ({ order, onClose, className }) => {
           ))}
         </main>
       </div>
-      <Popup
+
+      <RemovalConfirmationPopup
         isOpen={isRemovalConfirmationOpen}
-        onClose={() => {
-          setRemovalConfirmation(false);
-          // setCurrentlyRemovedProduct(null);
-        }}
-        title={t("removalConfirmationTitle")}
-      >
-        <Product
-          // we can be sure that at this point product is not null, because it is being set the same time popup visibility flag is set
-          product={currentlyRemovedProduct!}
-          isBeingRemoved
-        />
-
-        <footer className="flex justify-end gap-4">
-          <button
-            onClick={() => {
-              setRemovalConfirmation(false);
-              // setCurrentlyRemovedProduct(null);
-            }}
-          >
-            {t("cancelButtonTitle")}
-          </button>
-
-          <button
-            className="border border-red-500 shadow-md shadow-red-500/50 text-red-500 px-4 py-2 rounded-md"
-            onClick={() => {
-              dispatch(removeById(currentlyRemovedProduct!.id));
-              setRemovalConfirmation(false);
-              // setCurrentlyRemovedProduct(null);
-            }}
-          >
-            {t("removeButtonTitle")}
-          </button>
-        </footer>
-      </Popup>
+        product={currentlyRemovedProduct!}
+        onClose={() => setRemovalConfirmation(false)}
+      />
     </>
   );
 };
