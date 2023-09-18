@@ -16,8 +16,8 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 To create docker image, run the following command:
 
 ```bash
-COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker-compose build
-docker-compose up
+docker build -t nextjs-docker .
+docker run -p 3000:3000 nextjs-docker
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
