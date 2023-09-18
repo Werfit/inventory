@@ -73,7 +73,7 @@ const TopMenu: React.FC<Props> = ({ locale, className = "" }) => {
               <i className="material-symbols-outlined text-xs text-green-600">
                 schedule
               </i>
-              <span>{currentTime}</span>
+              <span suppressHydrationWarning>{currentTime}</span>
             </span>
           </div>
         </div>
