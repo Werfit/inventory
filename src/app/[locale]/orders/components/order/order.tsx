@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, useEffect, useState } from "react";
 import { useSelector } from "~/hooks/redux/hooks";
 import type { Order } from "~/common/types/order";
 
@@ -14,6 +14,12 @@ const Order: React.FC<Props> = ({ order, onClick, className = "" }) => {
     () => products.filter((product) => product.order === order.id),
     [products, order]
   );
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    // since products are stored in localStorage, server data may differ from client data, this will prevent hydration warning
+    setIsClient(true);
+  }, []);
 
   return (
     <div
@@ -35,7 +41,7 @@ const Order: React.FC<Props> = ({ order, onClick, className = "" }) => {
         {/* active items amount */}
         <p>
           {orderProducts.filter((product) => !product.inUse).length} /{" "}
-          {orderProducts.length}
+          {isClient ? orderProducts.length : 0}
         </p>
         <p>{order.date}</p>
       </div>

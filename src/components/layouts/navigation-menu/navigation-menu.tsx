@@ -20,30 +20,27 @@ const NavigationMenu: React.FC<Props> = ({ tabs, className = "" }) => {
 
   return (
     <nav
-      className={`bg-gray-100 h-screen py-8 px-4 flex justify-center ${className}`}
+      className={`bg-gray-100 sm:h-screen py-8 px-4 flex justify-center ${className}`}
     >
-      <div>
+      <div className="flex gap-5 items-center justify-between w-full sm:block">
         <div className="relative">
           <Image
             src={PlaceHolderImage}
             alt="User image"
-            className="w-40 h-40 object-cover rounded-full"
+            className="w-20 h-20 sm:w-40 sm:h-40 object-cover rounded-full"
             priority
           />
-          <button className="absolute bottom-0 right-0 bg-white shadow-lg shadow-gray-100/50 py-2 px-3 rounded-full">
-            <i className="material-symbols-outlined text-xl">settings</i>
+          <button className="absolute bottom-0 right-0 bg-white shadow-lg shadow-gray-100/50 py-1 px-2 sm:py-2 sm:px-3 rounded-full">
+            <i className="material-symbols-outlined sm:text-xl leading-7 text-lg">
+              settings
+            </i>
           </button>
         </div>
 
-        <ul className="text-center mt-10 flex flex-col gap-3">
+        <ul className="text-center sm:mt-10 flex sm:flex-col gap-3">
           {tabs.map((tab, index) => {
             const route = Routes.find((route) => route.name === tab);
 
-            // console.log(
-            //   route?.path === pathname
-            //     ? `underline decoration-2 decoration-green-600 underline-offset-8`
-            //     : ""
-            // );
             return (
               <li
                 key={index}

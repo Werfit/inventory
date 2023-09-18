@@ -16,14 +16,14 @@ const OrdersPage = () => {
   const [currentOrder, setCurrentOrder] = useState<OrderType | null>(null);
 
   return (
-    <div className="flex flex-col gap-20 animate__animated animate__fadeIn">
+    <div className="flex flex-col sm:gap-20 gap-10 animate__animated animate__fadeIn">
       <header className="flex items-center gap-4">
         <span className="text-lg font-bold tracking-wider">
           {t("ordersPage")} / {orders.length}
         </span>
       </header>
 
-      <main className="flex gap-10">
+      <main className="flex gap-10 sm:flex-row flex-col ">
         <div
           className={`flex flex-col gap-4 min-w-[35%] flex-${Number(
             !currentOrder

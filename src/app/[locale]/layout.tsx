@@ -42,13 +42,13 @@ const RootLayout: React.FC<Props> = async ({
             locale={locale}
             messages={messages}
           >
-            <div className="flex h-full">
+            <div className="flex h-full sm:flex-row flex-col">
               <NavigationMenu
                 className="mt-14 min-w-1/6"
                 tabs={Routes.map((route) => route.name)}
               />
               <ProductsProvider>
-                <main className="mt-14 px-20 py-20 flex-1 overflow-x-hidden">
+                <main className="sm:mt-14 px-20 py-20 flex-1 overflow-x-hidden">
                   {children}
                 </main>
               </ProductsProvider>

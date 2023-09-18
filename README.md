@@ -2,6 +2,8 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 The application was made by designs with being based on the technical requirements. You can see all of the orders, all of the products, products that relate to a specific order, filter products by their specification and/or model. It is possible to delete products (changes will be stored in localStorage until you remove all of the products. When you do, mocked values will be returned).
 
+Mobile support is implemented as well.
+
 ## Getting Started
 
 First, run the development server:
