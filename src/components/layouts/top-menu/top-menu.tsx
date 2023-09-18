@@ -1,12 +1,13 @@
 "use client";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
+import { utcToZonedTime } from "date-fns-tz";
 
 import { LanguagePicker } from "./components/language-picker";
 
 // returns formatted time (e.g. 12:21)
 const getFormattedTime = () => {
-  const date = new Date();
+  const date = utcToZonedTime(new Date(), "Europe/Kyiv");
   const dateHours = date.getHours();
   const dateMinutes = date.getMinutes();
 
@@ -27,7 +28,7 @@ const TopMenu: React.FC<Props> = ({ locale, className = "" }) => {
 
   // returns formatted date (e.g. 12 MAR, 2017)
   const getFormattedDate = () => {
-    const date = new Date();
+    const date = utcToZonedTime(new Date(), "Europe/Kyiv");
     const year = date.getFullYear();
     const month = date.getMonth();
     const day = date.getDate();
@@ -36,6 +37,7 @@ const TopMenu: React.FC<Props> = ({ locale, className = "" }) => {
   };
 
   useEffect(() => {
+    // should be one seconds, to avoid cases of clock update delay, like when website gets opened at 00:00:30 and then it waits a minute to update the clock.
     const INTERVAL = 1000;
     const timer = setInterval(
       () => setCurrentTime(getFormattedTime()),

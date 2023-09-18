@@ -1,4 +1,5 @@
 import { useTranslations } from "next-intl";
+import { utcToZonedTime } from "date-fns-tz";
 
 import { useDispatch, useSelector } from "~/hooks/redux/hooks";
 import { removeById } from "~/store/products/slices";
@@ -10,7 +11,7 @@ type Props = {
 };
 
 const formatShortDate = (date: string) => {
-  const date_ = new Date(date);
+  const date_ = utcToZonedTime(new Date(date), "Europe/Kyiv");
 
   const month = date_.getMonth() + 1;
   const day = date_.getDate();
@@ -24,7 +25,7 @@ const Item: React.FC<Props> = ({ product, className = "" }) => {
   const t = useTranslations();
 
   const formatDate = (date: string) => {
-    const date_ = new Date(date);
+    const date_ = utcToZonedTime(new Date(date), "Europe/Kyiv");
 
     const year = date_.getFullYear();
     const month = date_.getMonth();

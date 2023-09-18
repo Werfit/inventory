@@ -21,6 +21,10 @@ const translations: Record<string, string | object> = {
   ],
 };
 
+jest.mock("date-fns-tz", () => ({
+  utcToZonedTime: (date: Date) => date,
+}));
+
 jest.mock("next/navigation", () => ({
   usePathname: () => "/",
   useRouter: () => ({
