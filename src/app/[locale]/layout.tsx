@@ -67,7 +67,7 @@ const RootLayout: React.FC<Props> = async ({
 
 export const metadata = {
   title: "Inventory",
-  description: "Inventory application for DZENCode",
+  description: "Inventory application",
 };
 
 export default RootLayout;
