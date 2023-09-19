@@ -23,7 +23,7 @@ const Order: React.FC<Props> = ({ order, onClick, className = "" }) => {
 
   return (
     <div
-      className={`bg-white border border-gray-400 px-6 py-3 flex items-center rounded-sm shadow-md shadow-gray-400/25 ${className}`}
+      className={`bg-white border border-gray-400 px-6 py-3 flex items-center rounded-sm shadow-md shadow-gray-400/25 overflow-scroll ${className}`}
     >
       <button
         onClick={() => (onClick ? onClick(order) : () => {})}

@@ -11,7 +11,7 @@ const Product: React.FC<Props> = ({ product, isBeingRemoved, onRemove }) => {
   const t = useTranslations();
 
   return (
-    <div className="flex items-center">
+    <div className="flex items-center overflow-scroll">
       <div>
         <span
           className={`block w-3 h-3 bg-${
